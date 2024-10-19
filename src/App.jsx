@@ -26,7 +26,7 @@ const App = () => {
         // Call the Gemini API
         try {
             const response = await axios.post(
-                'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyDp38JIvL_7j4TDEDb1Vg6tqZ2LlZBE1Ic',
+                'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=YOUR_API_KEY',
                 {
                     contents: [
                         {
@@ -65,6 +65,11 @@ const App = () => {
         sendMessage(message); // Send the selected quick reply message
     };
 
+    const handleFeedback = (index, feedback) => {
+        console.log(`Message at index ${index} received feedback: ${feedback}`);
+        // Here, you can handle feedback submission, e.g., send it to a backend or just log it
+    };
+
     return (
         <div className={`chatbot ${darkMode ? 'dark-mode' : 'light-mode'}`}>
             <div className="header">
@@ -82,8 +87,14 @@ const App = () => {
             <div className="chat-window">
                 <div className="messages">
                     {messages.map((msg, index) => (
-                        <div key={index} className={msg.sender}>
+                        <div key={index} className={`${msg.sender} message`}>
                             {msg.text}
+                            {msg.sender === 'bot' && (
+                                <div className="feedback-buttons">
+                                    <button onClick={() => handleFeedback(index, 'like')}>👍 Like</button>
+                                    <button onClick={() => handleFeedback(index, 'dislike')}>👎 Dislike</button>
+                                </div>
+                            )}
                         </div>
                     ))}
                 </div>
