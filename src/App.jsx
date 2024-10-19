@@ -2,11 +2,12 @@
 
 import React, { useState } from 'react';
 import axios from 'axios';
-import './App.css'
+import './App.css';
 
 const App = () => {
     const [messages, setMessages] = useState([]);
     const [input, setInput] = useState('');
+    const [darkMode, setDarkMode] = useState(false); // State to track the theme
 
     const handleInputChange = (event) => {
         setInput(event.target.value);
@@ -21,13 +22,13 @@ const App = () => {
         // Call the Gemini API
         try {
             const response = await axios.post(
-                'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyDp38JIvL_7j4TDEDb1Vg6tqZ2LlZBE1Ic',
+                'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=YOUR_API_KEY',
                 {
                     contents: [
                         {
                             parts: [
                                 {
-                                    text: input 
+                                    text: input
                                 }
                             ]
                         }
@@ -40,9 +41,9 @@ const App = () => {
                 }
             );
 
-            const botMessage = { 
+            const botMessage = {
                 text: response.data.candidates[0].content.parts[0].text,
-                sender: 'bot' 
+                sender: 'bot'
             };
             setMessages((prevMessages) => [...prevMessages, botMessage]);
         } catch (error) {
@@ -52,9 +53,18 @@ const App = () => {
         }
     };
 
+    const toggleTheme = () => {
+        setDarkMode(!darkMode); // Toggle dark mode
+    };
+
     return (
-        <div className="chatbot">
-          <div style={{width:"100%",height:"40px",backgroundColor:"orange",color:"black"}}>  CHAT BOT</div>
+        <div className={`chatbot ${darkMode ? 'dark-mode' : 'light-mode'}`}>
+            <div className="header">
+                <div>CHAT BOT</div>
+                <button onClick={toggleTheme} className="theme-toggle">
+                    {darkMode ? 'Light Mode' : 'Dark Mode'}
+                </button>
+            </div>
             <div className="chat-window">
                 <div className="messages">
                     {messages.map((msg, index) => (
@@ -64,12 +74,12 @@ const App = () => {
                     ))}
                 </div>
                 <form onSubmit={handleSubmit} className="input-form">
-                    <input 
-                        type="text" 
-                        value={input} 
-                        onChange={handleInputChange} 
-                        placeholder="Type your message..." 
-                        required 
+                    <input
+                        type="text"
+                        value={input}
+                        onChange={handleInputChange}
+                        placeholder="Type your message..."
+                        required
                     />
                     <button type="submit">Send</button>
                 </form>

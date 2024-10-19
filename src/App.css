@@ -3,12 +3,48 @@
 .chatbot {
   display: flex;
   flex-direction: column;
-  height:500px;
-  width: 400px; /* Set a fixed width for the chat window */
+  height: 500px;
+  width: 400px;
   border: 1px solid #ccc;
   border-radius: 10px;
   overflow: hidden;
   font-family: Arial, sans-serif;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: orange;
+  color: black;
+}
+
+.theme-toggle {
+  background-color: #ffffff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.theme-toggle:hover {
+  background-color: #ddd;
+}
+
+.light-mode {
+  --background-color: #f5f5f5;
+  --message-bg-user: #dcf8c6;
+  --message-bg-bot: #ffffff;
+  --text-color: #000;
+}
+
+.dark-mode {
+  --background-color: #121212;
+  --message-bg-user: #2e7d32;
+  --message-bg-bot: #424242;
+  --text-color: #fff;
 }
 
 .chat-window {
@@ -16,59 +52,59 @@
   flex-direction: column;
   flex-grow: 1;
   padding: 20px;
-  background-color: #04322d; /* Light background for chat window */
-  overflow-y: auto; /* Allow scrolling for messages */
+  background-color: var(--background-color);
+  overflow-y: auto;
 }
 
 .messages {
   display: flex;
   flex-direction: column;
-  gap: 10px; /* Space between messages */
+  gap: 10px;
 }
 
 .user {
-  align-self: flex-end; /* Align user messages to the right */
-  background-color: #dcf8c6; /* User message bubble color */
-  color: #000; /* User message text color */
+  align-self: flex-end;
+  background-color: var(--message-bg-user);
+  color: var(--text-color);
   border-radius: 10px;
   padding: 10px;
-  max-width: 70%; /* Limit message width */
-  word-wrap: break-word; /* Break long words */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow for effect */
+  max-width: 70%;
+  word-wrap: break-word;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .bot {
-  align-self: flex-start; /* Align bot messages to the left */
-  background-color: #ffffff; /* Bot message bubble color */
-  color: #000; /* Bot message text color */
+  align-self: flex-start;
+  background-color: var(--message-bg-bot);
+  color: var(--text-color);
   border-radius: 10px;
   padding: 10px;
-  max-width: 70%; /* Limit message width */
-  word-wrap: break-word; /* Break long words */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow for effect */
+  max-width: 70%;
+  word-wrap: break-word;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .input-form {
   display: flex;
   margin-top: 10px;
   padding: 10px;
-  border-top: 1px solid #ccc; /* Top border for input area */
-  background-color: #ffffff; /* Input area background color */
+  border-top: 1px solid #ccc;
+  background-color: #ffffff;
 }
 
 .input-form input {
   flex-grow: 1;
-  color:black;
+  color: black;
+  background-color: whitesmoke;
   padding: 10px;
-  background-color:white ;
   border: 1px solid #ccc;
   border-radius: 5px;
-  margin-right: 10px; /* Space between input and button */
+  margin-right: 10px;
 }
 
 .input-form button {
-  background-color:orange; /* Send button color */
-  color:black; /* Send button text color */
+  background-color: orange;
+  color: black;
   border: none;
   font-weight: 600;
   border-radius: 5px;
@@ -76,6 +112,4 @@
   cursor: pointer;
 }
 
-.input-form button:hover {
-  background-color: #0056b3; /* Darker color on hover */
-}
+
