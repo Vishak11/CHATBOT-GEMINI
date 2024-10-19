@@ -54,7 +54,7 @@ const App = () => {
 
     return (
         <div className="chatbot">
-          <div style={{width:"100%",height:"40px",backgroundColor:"orange"}}></div>
+          <div style={{width:"100%",height:"40px",backgroundColor:"orange",color:"black"}}>  CHAT BOT</div>
             <div className="chat-window">
                 <div className="messages">
                     {messages.map((msg, index) => (
