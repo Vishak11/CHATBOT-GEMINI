@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   height: 500px;
-  width: 400px;
+  width: 100vw;
   border: 1px solid #ccc;
   border-radius: 10px;
   overflow: hidden;
@@ -21,7 +21,7 @@
 }
 
 .theme-toggle {
-  background-color: #ffffff;
+  background-color: #000000;
   border: none;
   padding: 5px 10px;
   border-radius: 5px;
@@ -41,7 +41,7 @@
 }
 
 .dark-mode {
-  --background-color: #121212;
+  --background-color: #000000;
   --message-bg-user: #2e7d32;
   --message-bg-bot: #424242;
   --text-color: #fff;
@@ -113,3 +113,25 @@
 }
 
 
+.quick-replies {
+  display: flex;
+  justify-content: space-around;
+  margin: 10px 0;
+}
+
+.quick-replies button {
+  background-color: #f7fbff;
+  border: none;
+  color: black;
+  font-weight: 600 ;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin: 5px;
+  transition: background-color 0.3s;
+}
+
+.quick-replies button:hover {
+  background-color: #0056b3;
+}

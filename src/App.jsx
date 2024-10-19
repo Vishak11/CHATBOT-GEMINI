@@ -15,20 +15,24 @@ const App = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const userMessage = { text: input, sender: 'user' };
-        setMessages((prevMessages) => [...prevMessages, userMessage]);
+        sendMessage(input);
         setInput('');
+    };
+
+    const sendMessage = async (text) => {
+        const userMessage = { text, sender: 'user' };
+        setMessages((prevMessages) => [...prevMessages, userMessage]);
 
         // Call the Gemini API
         try {
             const response = await axios.post(
-                'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=YOUR_API_KEY',
+                'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyDp38JIvL_7j4TDEDb1Vg6tqZ2LlZBE1Ic',
                 {
                     contents: [
                         {
                             parts: [
                                 {
-                                    text: input
+                                    text
                                 }
                             ]
                         }
@@ -57,6 +61,10 @@ const App = () => {
         setDarkMode(!darkMode); // Toggle dark mode
     };
 
+    const handleQuickReply = (message) => {
+        sendMessage(message); // Send the selected quick reply message
+    };
+
     return (
         <div className={`chatbot ${darkMode ? 'dark-mode' : 'light-mode'}`}>
             <div className="header">
@@ -64,6 +72,12 @@ const App = () => {
                 <button onClick={toggleTheme} className="theme-toggle">
                     {darkMode ? 'Light Mode' : 'Dark Mode'}
                 </button>
+            </div>
+            <div className="quick-replies">
+                <button onClick={() => handleQuickReply('What is the weather today?')}>Weather</button>
+                <button onClick={() => handleQuickReply('What is the temperature at my location?')}>Location Temperature</button>
+                <button onClick={() => handleQuickReply('How are you?')}>How are you?</button>
+                <button onClick={() => handleQuickReply('Tell me a joke.')}>Tell me a joke</button>
             </div>
             <div className="chat-window">
                 <div className="messages">
