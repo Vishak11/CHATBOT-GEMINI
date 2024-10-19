@@ -1,4 +1,3 @@
-// src/Chatbot.js
 
 import React, { useState } from 'react';
 import axios from 'axios';
@@ -7,7 +6,7 @@ import './App.css';
 const App = () => {
     const [messages, setMessages] = useState([]);
     const [input, setInput] = useState('');
-    const [darkMode, setDarkMode] = useState(false); // State to track the theme
+    const [darkMode, setDarkMode] = useState(false); 
 
     const handleInputChange = (event) => {
         setInput(event.target.value);
@@ -58,16 +57,15 @@ const App = () => {
     };
 
     const toggleTheme = () => {
-        setDarkMode(!darkMode); // Toggle dark mode
+        setDarkMode(!darkMode);
     };
 
     const handleQuickReply = (message) => {
-        sendMessage(message); // Send the selected quick reply message
+        sendMessage(message); 
     };
 
     const handleFeedback = (index, feedback) => {
         console.log(`Message at index ${index} received feedback: ${feedback}`);
-        // Here, you can handle feedback submission, e.g., send it to a backend or just log it
     };
 
     return (
@@ -91,8 +89,8 @@ const App = () => {
                             {msg.text}
                             {msg.sender === 'bot' && (
                                 <div className="feedback-buttons">
-                                    <button onClick={() => handleFeedback(index, 'like')}>👍 Like</button>
-                                    <button onClick={() => handleFeedback(index, 'dislike')}>👎 Dislike</button>
+                                    <button onClick={() => handleFeedback(index, 'like')}>👍</button>
+                                    <button onClick={() => handleFeedback(index, 'dislike')}>👎</button>
                                 </div>
                             )}
                         </div>
