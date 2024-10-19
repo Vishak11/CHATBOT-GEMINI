@@ -1,8 +1,2 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This AI chatbot application is built to deliver a conversational experience similar to ChatGPT, with a unique design that differ from the provided figma. The application leverages the Gemini API to power its AI-driven conversations, ensuring accurate and responsive interactions.I chose this desing over the figma becasue the for me the fimga looked like a chat gpt clone.I wanted it look like a chat app.So i chose the particular desing.
+if i would get more time,i would create an chrome extension and integrate in the browser.
