@@ -3,7 +3,7 @@
 .chatbot {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height:500px;
   width: 400px; /* Set a fixed width for the chat window */
   border: 1px solid #ccc;
   border-radius: 10px;

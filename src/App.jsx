@@ -27,7 +27,7 @@ const App = () => {
                         {
                             parts: [
                                 {
-                                    text: input // Use the user's input text
+                                    text: input 
                                 }
                             ]
                         }
@@ -40,9 +40,8 @@ const App = () => {
                 }
             );
 
-            // Extract the bot response from the API response
             const botMessage = { 
-                text: response.data.candidates[0].content.parts[0].text, // Adjusted based on the provided response structure
+                text: response.data.candidates[0].content.parts[0].text,
                 sender: 'bot' 
             };
             setMessages((prevMessages) => [...prevMessages, botMessage]);
@@ -55,6 +54,7 @@ const App = () => {
 
     return (
         <div className="chatbot">
+          <div style={{width:"100%",height:"40px",backgroundColor:"orange"}}></div>
             <div className="chat-window">
                 <div className="messages">
                     {messages.map((msg, index) => (
